@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/static/css/main.fc0706bd.css",
+    "main.js": "/static/js/main.a81d6b4c.js",
+    "static/js/787.71e672d5.chunk.js": "/static/js/787.71e672d5.chunk.js",
+    "static/media/main-background.jpg": "/static/media/main-background.81e5293981c013566baa.jpg",
+    "static/media/section-2-background.png": "/static/media/section-2-background.5e9e2bc2d32a3b1b71c4.png",
+    "static/media/section-1-background.png": "/static/media/section-1-background.f85bfedc1acb16b4bde6.png",
+    "static/media/bsc.png": "/static/media/bsc.37a1777554e97c59f48d.png",
+    "static/media/pancakeswap.png": "/static/media/pancakeswap.7ef77f41e8e80cd54a15.png",
+    "static/media/ipfs.png": "/static/media/ipfs.c717ffac20102df7b445.png",
+    "static/media/openzeppelin.png": "/static/media/openzeppelin.985f38313aace2e903a3.png",
+    "static/media/certik.png": "/static/media/certik.e381df8d26b5bcc6854c.png",
+    "static/media/not-found-background.svg": "/static/media/not-found-background.613751422578dfbe3814cd3583441b6d.svg",
+    "index.html": "/index.html",
+    "main.fc0706bd.css.map": "/static/css/main.fc0706bd.css.map",
+    "main.a81d6b4c.js.map": "/static/js/main.a81d6b4c.js.map",
+    "787.71e672d5.chunk.js.map": "/static/js/787.71e672d5.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fc0706bd.css",
+    "static/js/main.a81d6b4c.js"
+  ]
+}
