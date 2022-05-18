@@ -78,7 +78,7 @@ const NFTs = (): JSX.Element => {
                   image={item.media}
                   sx={{
                     position: 'relative',
-                    height: { xs: 350, sm: 450, md: 400 },
+                    height: { xs: 350, sm: 400, md: 450 },
                     overflow: 'hidden',
                   }}
                 />

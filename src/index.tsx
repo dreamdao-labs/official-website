@@ -3,11 +3,17 @@ import ReactDOM from 'react-dom/client';
 
 import { HashRouter } from 'react-router-dom';
 
+import { Buffer } from 'buffer';
+
 import App from './pages/App';
 
 import reportWebVitals from './reportWebVitals';
 
 // import './i18n';
+
+if (!window.Buffer) {
+  window.Buffer = Buffer;
+}
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

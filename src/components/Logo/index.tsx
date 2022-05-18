@@ -3,7 +3,7 @@ import React from 'react';
 import { useTheme, Typography } from '@mui/material';
 
 interface Props {
-  colorInvert?: boolean
+  colorInvert?: boolean;
 }
 
 const Logo = ({ colorInvert = false }: Props) => {

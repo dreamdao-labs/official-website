@@ -6,7 +6,7 @@ import { LightMode, DarkMode } from '@mui/icons-material';
 import { PaletteModeContext } from 'contexts/PaletteModeContext';
 
 interface Props {
-  colorInvert: boolean
+  colorInvert: boolean;
 }
 
 const TogglePaletteMode = ({ colorInvert }: Props) => {

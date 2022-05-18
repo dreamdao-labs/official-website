@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useTheme, useScrollTrigger, Container, Box, AppBar, Toolbar, Divider, Drawer, Button } from '@mui/material';
-import { Menu, AccountBalanceWallet } from '@mui/icons-material';
+import { Menu } from '@mui/icons-material';
 
 import Logo from '../Logo';
+import Account from '../Account';
 import TogglePaletteMode from './TogglePaletteMode';
 
 const Menus = [
@@ -81,17 +82,7 @@ const Header = () => {
           </Box>
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <TogglePaletteMode colorInvert={ scroolTriggered } />
-            <Button
-              variant="outlined"
-              startIcon={<AccountBalanceWallet />}
-              color="inherit"
-              sx={{
-                color: theme.palette.mode === 'light' && scroolTriggered ? theme.palette.text.primary : 'inherit',
-                borderColor: theme.palette.mode === 'light' && scroolTriggered ? theme.palette.text.primary : 'inherit',
-              }}
-            >
-              Connect Wallet
-            </Button>
+            <Account colorInvert={ scroolTriggered }  />
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' } }} alignItems={'center'}>
             <Button
@@ -147,17 +138,7 @@ const Header = () => {
           ))}
         </Box>
         <Box sx={{ paddingX: 2 }}>
-          <Button
-            variant="outlined"
-            startIcon={<AccountBalanceWallet />}
-            color="inherit"
-            sx={{
-              color: theme.palette.mode === 'light' && scroolTriggered ? theme.palette.text.primary : 'inherit',
-              borderColor: theme.palette.mode === 'light' && scroolTriggered ? theme.palette.text.primary : 'inherit',
-            }}
-          >
-            Connect Wallet
-          </Button>
+          <Account colorInvert={ scroolTriggered }  />
         </Box>
       </Drawer>
     </AppBar>
