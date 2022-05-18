@@ -5,7 +5,8 @@ import AOS from 'aos';
 import { Routes, Route } from 'react-router-dom';
 
 import { WagmiProvider, Chain, createClient } from 'wagmi';
-import { MetaMaskConnector } from 'wagmi/connectors/metaMask';
+
+import { InjectedConnector } from 'wagmi/connectors/injected';
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 
 import { PaletteModeProvider } from '../contexts/PaletteModeContext';
@@ -46,7 +47,12 @@ const App = () => {
     autoConnect: true,
     connectors() {
       return [
-        new MetaMaskConnector({ chains: [bsc] }),
+        new InjectedConnector({
+          chains: [bsc],
+          options: {
+            name: 'MetaMask'
+          },
+        }),
         new WalletConnectConnector({
           chains: [bsc],
           options: {

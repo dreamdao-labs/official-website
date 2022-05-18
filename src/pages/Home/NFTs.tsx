@@ -13,16 +13,34 @@ const mock = [
     media: '/tokens/1.png',
     title: 'Star',
     description: '1,000 Limited Editions, 500 USDT/NFT.',
+    action: {
+      title: 'Purchase',
+      method: () => {
+
+      }
+    }
   },
   {
     media: '/tokens/2.png',
     title: 'Moon',
     description: '5 Star combined into 1 Moon.',
+    action: {
+      title: 'Level Up',
+      method: () => {
+
+      }
+    }
   },
   {
     media: '/tokens/3.png',
     title: 'Sun',
     description: '5 Moon combined into 1 Sun.',
+    action: {
+      title: 'Level Up',
+      method: () => {
+
+      }
+    }
   },
 ];
 
@@ -96,8 +114,12 @@ const NFTs = (): JSX.Element => {
                     </Typography>
                   </Box>
                   <CardActions sx={{ justifyContent: 'flex-end' }}>
-                    <Button variant="contained">
-                      Purchase
+                    <Button
+                      variant="contained"
+                      size="large"
+                      onClick={item.action.method}
+                    >
+                      {item.action.title}
                     </Button>
                   </CardActions>
                 </CardContent>

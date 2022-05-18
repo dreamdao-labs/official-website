@@ -24,23 +24,13 @@ const ConnectWalletDialog = ({ opened = false, handleClose }: Props) => {
       <DialogTitle>
         Connect a wallet
       </DialogTitle>
-      <DialogContent
-        dividers
-        sx={{
-          maxWidth: { sm: 200, md: 400 },
-        }}
-      >
+      <DialogContent dividers>
         {
           error
             ?
             <Alert severity="error">{error.message}</Alert>
             :
-            <Typography sx={{ padding: 2, border: 1, borderColor: theme.palette.divider, borderRadius: 1.5 }}>
-              By connecting a wallet, you agree to{' '}
-              <Link>Terms of Service</Link>{' '}
-              and acknowledge that you have read and understand the{' '}
-              <Link>Disclaimer</Link>.
-            </Typography>
+            <Alert severity="info">Choose a wallet</Alert>
         }
         {connectors.map((connector) => (
           <Box
@@ -62,7 +52,7 @@ const ConnectWalletDialog = ({ opened = false, handleClose }: Props) => {
               </Typography>
               <Avatar
                 src={ connector.name == 'MetaMask' ? metamask : walletconnect }
-                sx={{ width: 48, height: 48 }}
+                sx={{ width: 34, height: 34 }}
               />
             </Button>
           </Box>
