@@ -1,14 +1,14 @@
 import React from 'react';
 
-import { useAccount, useConnect, useDisconnect } from 'wagmi';
-
 import { useTheme, Box, Stack, Button, Avatar } from '@mui/material';
 import { AccountBalanceWallet, Logout } from '@mui/icons-material';
 
-import { formatAddress } from '../../utils';
+import { useWeb3React } from '@web3-react/core';
 
-import metamask from '../../assets/images/wallets/metamask.svg';
-import walletconnect from '../../assets/images/wallets/walletconnect.svg';
+import { shortenAddress } from '../../utils';
+
+import metamaskIco from '../../assets/images/wallets/metamask.svg';
+import walletConnectIco from '../../assets/images/wallets/walletconnect.svg';
 
 import ConnectWalletDialog from './ConnectWalletDialog';
 
@@ -17,10 +17,7 @@ interface Props {
 }
 
 const Account = ({ colorInvert = false }: Props) => {
-  const { data: account } = useAccount();
-
-  const { activeConnector } = useConnect();
-  const { disconnect } = useDisconnect();
+  const { deactivate, active, account } = useWeb3React();
 
   const theme = useTheme();
   const [opened, setOpened] = React.useState(false);
@@ -33,15 +30,17 @@ const Account = ({ colorInvert = false }: Props) => {
     setOpened(false);
   };
 
+  console.log(active);
+
   if (account) {
     return (
       <Stack direction={{ xs: 'column', md: 'row' }} spacing={ 1 }>
         <Button
           startIcon={
             <Avatar
-              src={
-                activeConnector?.name == 'WalletConnect' ? walletconnect : metamask
-              }
+              // src={
+              // activeConnector?.name == 'WalletConnect' ? walletconnect : metamask
+              // }
               sx={{
                 width: 22,
                 height: 22,
@@ -56,10 +55,10 @@ const Account = ({ colorInvert = false }: Props) => {
             borderColor: theme.palette.mode === 'light' && colorInvert ? theme.palette.text.primary : 'inherit',
           }}
         >
-          { formatAddress(account.address) }
+          { shortenAddress(account) }
         </Button>
         <Button
-          onClick={ () => disconnect() }
+          onClick={ () => deactivate() }
           startIcon={<Logout />}
           variant="outlined"
           color="inherit"

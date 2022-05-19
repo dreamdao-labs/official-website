@@ -1,10 +1,10 @@
 {
   "files": {
     "main.css": "/static/css/main.fc0706bd.css",
-    "main.js": "/static/js/main.533d7a18.js",
+    "main.js": "/static/js/main.3bacdc0e.js",
     "static/js/563.8c586e7b.chunk.js": "/static/js/563.8c586e7b.chunk.js",
     "static/js/787.71e672d5.chunk.js": "/static/js/787.71e672d5.chunk.js",
-    "static/js/163.24f16d8c.chunk.js": "/static/js/163.24f16d8c.chunk.js",
+    "static/js/163.20d1b472.chunk.js": "/static/js/163.20d1b472.chunk.js",
     "static/media/main-background.jpg": "/static/media/main-background.81e5293981c013566baa.jpg",
     "static/media/section-2-background.png": "/static/media/section-2-background.5e9e2bc2d32a3b1b71c4.png",
     "static/media/section-1-background.png": "/static/media/section-1-background.f85bfedc1acb16b4bde6.png",
@@ -18,12 +18,12 @@
     "static/media/walletconnect.svg": "/static/media/walletconnect.be57889d12613f4f3cd095dacfc22ffb.svg",
     "index.html": "/index.html",
     "main.fc0706bd.css.map": "/static/css/main.fc0706bd.css.map",
-    "main.533d7a18.js.map": "/static/js/main.533d7a18.js.map",
+    "main.3bacdc0e.js.map": "/static/js/main.3bacdc0e.js.map",
     "787.71e672d5.chunk.js.map": "/static/js/787.71e672d5.chunk.js.map",
-    "163.24f16d8c.chunk.js.map": "/static/js/163.24f16d8c.chunk.js.map"
+    "163.20d1b472.chunk.js.map": "/static/js/163.20d1b472.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.fc0706bd.css",
-    "static/js/main.533d7a18.js"
+    "static/js/main.3bacdc0e.js"
   ]
 }

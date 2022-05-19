@@ -1,11 +1,12 @@
 import React from 'react';
 
-import { useConnect } from 'wagmi';
+import { useWeb3React } from '@web3-react/core';
+import { injected, walletConnect } from '../../connectors';
 
-import { useTheme, Box, Button, Typography, Link, Avatar, Alert, Dialog, DialogTitle, DialogContent } from '@mui/material';
+import { Box, Button, Typography, Avatar, Alert, Dialog, DialogTitle, DialogContent } from '@mui/material';
 
-import metamask from '../../assets/images/wallets/metamask.svg';
-import walletconnect from '../../assets/images/wallets/walletconnect.svg';
+import metamaskIco from '../../assets/images/wallets/metamask.svg';
+import walletConnectIco from '../../assets/images/wallets/walletconnect.svg';
 
 interface Props {
   opened?: boolean;
@@ -13,8 +14,7 @@ interface Props {
 }
 
 const ConnectWalletDialog = ({ opened = false, handleClose }: Props) => {
-  const { connect, connectors, error, isConnecting, pendingConnector } = useConnect();
-  const theme = useTheme();
+  const { activate, error } = useWeb3React();
 
   return (
     <Dialog
@@ -32,31 +32,50 @@ const ConnectWalletDialog = ({ opened = false, handleClose }: Props) => {
             :
             <Alert severity="info">Choose a wallet</Alert>
         }
-        {connectors.map((connector) => (
-          <Box
-            key={ connector.id }
-            sx={{ marginTop: 2 }}
+        <Box
+          sx={{ marginTop: 2 }}
+        >
+          <Button
+            variant="outlined"
+            size="large"
+            fullWidth
+            color="inherit"
+            onClick={ () => {
+              activate(injected);
+              handleClose();
+            } }
           >
-            <Button
-              variant="outlined"
-              size="large"
-              fullWidth
-              color="inherit"
-              disabled={ !connector.ready }
-              onClick={ () => connect(connector) }
-            >
-              <Typography sx={{ flexGrow: 1, paddingX: 2, textAlign: 'left' }}>
-                { connector.name }
-                { !connector.ready && ' (unsupported)' }
-                { isConnecting && connector.id === pendingConnector?.id && ' (connecting)' }
-              </Typography>
-              <Avatar
-                src={ connector.name == 'MetaMask' ? metamask : walletconnect }
-                sx={{ width: 34, height: 34 }}
-              />
-            </Button>
-          </Box>
-        ))}
+            <Typography sx={{ flexGrow: 1, paddingX: 2, textAlign: 'left' }}>
+              MetaMask
+            </Typography>
+            <Avatar
+              src={ metamaskIco }
+              sx={{ width: 34, height: 34 }}
+            />
+          </Button>
+        </Box>
+        <Box
+          sx={{ marginTop: 2 }}
+        >
+          <Button
+            variant="outlined"
+            size="large"
+            fullWidth
+            color="inherit"
+            onClick={ () => {
+              activate(walletConnect);
+              handleClose();
+            } }
+          >
+            <Typography sx={{ flexGrow: 1, paddingX: 2, textAlign: 'left' }}>
+              WalletConnect
+            </Typography>
+            <Avatar
+              src={ walletConnectIco }
+              sx={{ width: 34, height: 34 }}
+            />
+          </Button>
+        </Box>
       </DialogContent>
     </Dialog>
   );

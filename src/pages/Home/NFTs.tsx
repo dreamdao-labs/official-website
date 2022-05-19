@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container, Box } from '@mui/material';
 import Typography from '@mui/material/Typography';
+import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
@@ -8,43 +9,87 @@ import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 
-const mock = [
-  {
-    media: '/tokens/1.png',
-    title: 'Star',
-    description: '1,000 Limited Editions, 500 USDT/NFT.',
-    action: {
-      title: 'Purchase',
-      method: () => {
+import { useWeb3React } from '@web3-react/core';
+import { useContract } from '../../hooks/usContract';
 
-      }
-    }
-  },
-  {
-    media: '/tokens/2.png',
-    title: 'Moon',
-    description: '5 Star combined into 1 Moon.',
-    action: {
-      title: 'Level Up',
-      method: () => {
-
-      }
-    }
-  },
-  {
-    media: '/tokens/3.png',
-    title: 'Sun',
-    description: '5 Moon combined into 1 Sun.',
-    action: {
-      title: 'Level Up',
-      method: () => {
-
-      }
-    }
-  },
-];
+import erc20ABI from '../../contracts/abis/ERC20.json';
+import dreamTokenABI from '../../contracts/abis/DreamToken.json';
+import storeABI from '../../contracts/abis/Store.json';
 
 const NFTs = (): JSX.Element => {
+  const [amount, setAmount] = useState('5');
+
+  const { account } = useWeb3React();
+
+  const usdtContract = useContract(
+    '0x55d398326f99059fF775485246999027B3197955',
+    erc20ABI
+  );
+
+  const dreamTokenContract = useContract(
+    '0xEffcD0c829797BD3173e4247cC070A47ECD08B96',
+    dreamTokenABI
+  );
+
+  const storeContract = useContract(
+    '0xb14F5645F5C22B555f95fD16C34D2e8308D5cf4C',
+    storeABI
+  );
+
+  const mock = [
+    {
+      media: '/tokens/1.png',
+      title: 'Star',
+      description: '1,000 Limited Editions, 500 USDT/NFT.',
+      textFieldName: 'price',
+      action: {
+        title: 'Purchase',
+        method: async () => {
+          const price = await storeContract!.price();
+          const allowance = await usdtContract!.allowance(account, usdtContract?.address);
+          if (allowance < price) {
+            const approveTx = await usdtContract!.approve(usdtContract?.address, price);
+            await approveTx.wait();
+          }
+          const purchaseTx = await storeContract!.purchase(amount);
+          await purchaseTx.wait();
+        }
+      }
+    },
+    {
+      media: '/tokens/2.png',
+      title: 'Moon',
+      description: '5 Star combined into 1 Moon.',
+      textFieldName: null,
+      action: {
+        title: 'Level Up',
+        method: async () => {
+          const balance = await dreamTokenContract!.balanceOf(account, 0);
+          if (balance >= 5) {
+            const levelUpTx = await dreamTokenContract!.levelUp(0, 5);
+            await levelUpTx.wait();
+          }
+        }
+      }
+    },
+    {
+      media: '/tokens/3.png',
+      title: 'Sun',
+      description: '5 Moon combined into 1 Sun.',
+      textFieldName: null,
+      action: {
+        title: 'Level Up',
+        method: async () => {
+          const balance = await dreamTokenContract!.balanceOf(account, 1);
+          if (balance >= 5) {
+            const levelUpTx = await dreamTokenContract!.levelUp(1, 5);
+            await levelUpTx.wait();
+          }
+        }
+      }
+    },
+  ];
+
   return (
     <Container sx={{ my: 5 }}>
       <Box marginBottom={4}>
@@ -114,6 +159,21 @@ const NFTs = (): JSX.Element => {
                     </Typography>
                   </Box>
                   <CardActions sx={{ justifyContent: 'flex-end' }}>
+                    {
+                      item.textFieldName !== null &&
+                        <TextField
+                          id="amount"
+                          label="Amount"
+                          // variant="outlined"
+                          size="small"
+                          value={ amount }
+                          onChange={ (event: React.ChangeEvent<HTMLInputElement>) => { setAmount(event.target.value); } }
+                          sx={{
+                            width: 150,
+                            marginRight: 1
+                          }}
+                        />
+                    }
                     <Button
                       variant="contained"
                       size="large"
