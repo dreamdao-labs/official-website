@@ -4,13 +4,15 @@ import { NetworkConnector } from '@web3-react/network-connector';
 import { SafeAppConnector } from '@gnosis.pm/safe-apps-web3-react';
 
 const chainIds = [
-  1, 56, 137
+  // 1,
+  56,
+  // 137
 ];
 
 const rpcUrls: { [chainId: number]: string } = {
-  1: 'https://mainnet.infura.io/v3/2b354baaaf38422688251e7137e419b6',
+  // 1: 'https://mainnet.infura.io/v3/2b354baaaf38422688251e7137e419b6',
   56: 'https://bsc-dataseed1.binance.org',
-  137: 'https://polygon-mainnet.infura.io/v3/2b354baaaf38422688251e7137e419b6',
+  // 137: 'https://polygon-mainnet.infura.io/v3/2b354baaaf38422688251e7137e419b6',
 };
 
 export const injected = new InjectedConnector({

@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-import { Web3ReactProvider } from '@web3-react/core';
+import { Web3ReactProvider, createWeb3ReactRoot } from '@web3-react/core';
 import getLibrary from './utils/getLibrary';
+import { NETWORK_CONTEXT_NAME } from './constants/misc';
 
 import { HashRouter } from 'react-router-dom';
 
@@ -18,6 +19,8 @@ if (!window.Buffer) {
   window.Buffer = Buffer;
 }
 
+const Web3ProviderNetwork = createWeb3ReactRoot(NETWORK_CONTEXT_NAME);
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
@@ -25,9 +28,11 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Web3ReactProvider getLibrary={ getLibrary }>
-      <HashRouter>
-        <App />
-      </HashRouter>
+      <Web3ProviderNetwork getLibrary={ getLibrary }>
+        <HashRouter>
+          <App />
+        </HashRouter>
+      </Web3ProviderNetwork>
     </Web3ReactProvider>
   </React.StrictMode>
 );
