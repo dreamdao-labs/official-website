@@ -1,0 +1,11 @@
+{
+  "name": "Star",
+  "description": "The Star are unique digital collectibles that live on the Binance Smart Chain. Your Star doubles as Dream DAO's governance credential and grants exclusive benefits. Visit https://dreamdao.network for more details.",
+  "image": "https://dreamdao.network/tokens/0.png",
+  "attributes": [
+    {
+        "trait_type": "Level",
+        "value": "1"
+    }
+  ]
+}

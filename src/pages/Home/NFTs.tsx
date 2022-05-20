@@ -54,7 +54,7 @@ const NFTs = (): JSX.Element => {
 
   const mock = [
     {
-      media: '/tokens/1.png',
+      media: '/tokens/0.png',
       title: 'Star',
       description: '1,000 Limited Editions, 500 USDT/NFT.',
       textFieldName: 'price',
@@ -83,7 +83,7 @@ const NFTs = (): JSX.Element => {
       }
     },
     {
-      media: '/tokens/2.png',
+      media: '/tokens/1.png',
       title: 'Moon',
       description: '5 Star combined into 1 Moon.',
       textFieldName: null,
@@ -104,7 +104,7 @@ const NFTs = (): JSX.Element => {
       }
     },
     {
-      media: '/tokens/3.png',
+      media: '/tokens/2.png',
       title: 'Sun',
       description: '5 Moon combined into 1 Sun.',
       textFieldName: null,
