@@ -10,7 +10,9 @@ import {
   CardMedia,
   CardContent,
   CardActions,
-  Alert
+  Collapse,
+  Alert,
+  AlertColor
 } from '@mui/material';
 
 import { useWeb3React } from '@web3-react/core';
@@ -21,6 +23,16 @@ import dreamTokenABI from '../../contracts/abis/DreamToken.json';
 import storeABI from '../../contracts/abis/Store.json';
 
 const NFTs = (): JSX.Element => {
+  const [alert, setAlert] = useState(false);
+  const [alertSeverity, setAlertSeverity] = useState<AlertColor>('warning');
+  const [alertMessage, setAlertMessage] = useState('');
+
+  const openAlert = (severity: AlertColor, message: string) => {
+    setAlert(true);
+    setAlertSeverity(severity);
+    setAlertMessage(message);
+  };
+
   const [amount, setAmount] = useState('5');
 
   const { account } = useWeb3React();
@@ -49,14 +61,24 @@ const NFTs = (): JSX.Element => {
       action: {
         title: 'Purchase',
         method: async () => {
-          const price = await storeContract!.price();
-          const allowance = await usdtContract!.allowance(account, usdtContract?.address);
-          if (allowance < price) {
-            const approveTx = await usdtContract!.approve(usdtContract?.address, price);
-            await approveTx.wait();
+          if (parseInt(amount) >= 1) {
+            const price = await storeContract!.price();
+            const allowance = await usdtContract!.allowance(account, storeContract?.address);
+            if (allowance < price) {
+              const approveTx = await usdtContract!.approve(storeContract?.address, price);
+              openAlert('info', 'Approving...');
+
+              await approveTx.wait();
+            }
+
+            const purchaseTx = await storeContract!.purchase(amount);
+            openAlert('info', 'Transaction in progress...');
+
+            await purchaseTx.wait();
+            openAlert('success', 'Successful purchase!!!');
+          } else {
+            openAlert('warning', 'Amount cannot be less than 1!!!');
           }
-          const purchaseTx = await storeContract!.purchase(amount);
-          await purchaseTx.wait();
         }
       }
     },
@@ -68,11 +90,16 @@ const NFTs = (): JSX.Element => {
       action: {
         title: 'Level Up',
         method: async () => {
-          // const balance = await dreamTokenContract!.balanceOf(account, 0);
-          // if (balance >= 5) {
-          // const levelUpTx = await dreamTokenContract!.levelUp(0, 5);
-          // await levelUpTx.wait();
-          // }
+          const balance = await dreamTokenContract!.balanceOf(account, 0);
+          if (balance >= 5) {
+            const levelUpTx = await dreamTokenContract!.levelUp(0, 5);
+            openAlert('info', 'Transaction in progress...');
+
+            await levelUpTx.wait();
+            openAlert('success', 'Successful level up!!!');
+          } else {
+            openAlert('warning', 'Insufficient balance!!!');
+          }
         }
       }
     },
@@ -87,7 +114,12 @@ const NFTs = (): JSX.Element => {
           const balance = await dreamTokenContract!.balanceOf(account, 1);
           if (balance >= 5) {
             const levelUpTx = await dreamTokenContract!.levelUp(1, 5);
+            openAlert('info', 'Transaction in progress...');
+
             await levelUpTx.wait();
+            openAlert('success', 'Successful level up!!!');
+          } else {
+            openAlert('warning', 'Insufficient balance!!!');
           }
         }
       }
@@ -96,12 +128,6 @@ const NFTs = (): JSX.Element => {
 
   return (
     <Container sx={{ my: 5 }}>
-      <Alert
-        severity="warning"
-        onClose={ () => {} }
-      >
-        This is a warning alert — check it out!
-      </Alert>
       <Box marginBottom={4}>
         <Typography
           variant="h4"
@@ -198,6 +224,24 @@ const NFTs = (): JSX.Element => {
           </Grid>
         ))}
       </Grid>
+      <Collapse
+        in={ alert }
+        sx={{
+          position: 'sticky',
+          zIndex: 999,
+          bottom: 0
+        }}
+      >
+        <Alert
+          severity={ alertSeverity }
+          onClose={ () => setAlert(false) }
+          sx={{
+            marginY: 2
+          }}
+        >
+          { alertMessage }
+        </Alert>
+      </Collapse>
     </Container>
   );
 };
