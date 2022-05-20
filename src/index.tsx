@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
+import { Web3ReactProvider } from '@web3-react/core';
+import getLibrary from './utils/getLibrary';
+
 import { HashRouter } from 'react-router-dom';
 
 import { Buffer } from 'buffer';
@@ -21,9 +24,11 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <HashRouter>
-      <App />
-    </HashRouter>
+    <Web3ReactProvider getLibrary={ getLibrary }>
+      <HashRouter>
+        <App />
+      </HashRouter>
+    </Web3ReactProvider>
   </React.StrictMode>
 );
 

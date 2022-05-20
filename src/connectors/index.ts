@@ -1,6 +1,7 @@
 import { InjectedConnector } from '@web3-react/injected-connector';
 import { WalletConnectConnector } from '@web3-react/walletconnect-connector';
 import { NetworkConnector } from '@web3-react/network-connector';
+import { SafeAppConnector } from '@gnosis.pm/safe-apps-web3-react';
 
 const chainIds = [
   1, 56, 137
@@ -25,5 +26,7 @@ export const walletConnect = new WalletConnectConnector({
 
 export const network = new NetworkConnector({
   urls: rpcUrls,
-  defaultChainId: 1
+  defaultChainId: 56
 });
+
+export const gnosisSafe = new SafeAppConnector();

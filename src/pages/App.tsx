@@ -1,17 +1,10 @@
 import React from 'react';
-
 import AOS from 'aos';
-
 import { Routes, Route } from 'react-router-dom';
-
-import { Web3ReactProvider } from '@web3-react/core';
-import getLibrary from '../utils/getLibrary';
-
 import { PaletteModeProvider } from '../contexts/PaletteModeContext';
-
+import Web3ReactManager from '../components/Web3ReactManager';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-
 import Home from './Home';
 import NotFound from './NotFound';
 
@@ -28,7 +21,7 @@ const App = () => {
   }, []);
 
   return (
-    <Web3ReactProvider getLibrary={ getLibrary }>
+    <Web3ReactManager>
       <PaletteModeProvider>
         <Header />
         <Routes>
@@ -37,7 +30,7 @@ const App = () => {
         </Routes>
         <Footer />
       </PaletteModeProvider>
-    </Web3ReactProvider>
+    </Web3ReactManager>
   );
 };
 

@@ -1,6 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useWeb3React } from '@web3-react/core';
-
 import { injected } from '../connectors';
 
 export function useEagerConnect() {
@@ -8,18 +7,16 @@ export function useEagerConnect() {
   const [tried, setTried] = useState(false);
 
   useEffect(() => {
-    if (!active) {
-      injected.isAuthorized().then((isAuthorized: boolean) => {
-        if (isAuthorized) {
-          activate(injected, undefined, true).catch(() => {
-            setTried(true);
-          });
-        } else {
+    injected.isAuthorized().then((isAuthorized: boolean) => {
+      if (isAuthorized) {
+        activate(injected, undefined, true).catch(() => {
           setTried(true);
-        }
-      });
-    }
-  }, [activate, active]);
+        });
+      } else {
+        setTried(true);
+      }
+    });
+  }, []);
 
   useEffect(() => {
     if (!tried && active) {
@@ -29,3 +26,5 @@ export function useEagerConnect() {
 
   return tried;
 }
+
+export default useEagerConnect;

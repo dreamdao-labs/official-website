@@ -58,7 +58,10 @@ const Account = ({ colorInvert = false }: Props) => {
           { shortenAddress(account) }
         </Button>
         <Button
-          onClick={ () => deactivate() }
+          onClick={ async () => {
+            await deactivate();
+            openDialog;
+          } }
           startIcon={<Logout />}
           variant="outlined"
           color="inherit"

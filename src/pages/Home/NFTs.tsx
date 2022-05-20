@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
-import { Container, Box } from '@mui/material';
-import Typography from '@mui/material/Typography';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import Grid from '@mui/material/Grid';
-import Card from '@mui/material/Card';
-import CardMedia from '@mui/material/CardMedia';
-import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
+import {
+  Container,
+  Box,
+  Typography,
+  TextField,
+  Button,
+  Grid,
+  Card,
+  CardMedia,
+  CardContent,
+  CardActions,
+  Alert
+} from '@mui/material';
 
 import { useWeb3React } from '@web3-react/core';
 import { useContract } from '../../hooks/usContract';
@@ -64,11 +68,11 @@ const NFTs = (): JSX.Element => {
       action: {
         title: 'Level Up',
         method: async () => {
-          const balance = await dreamTokenContract!.balanceOf(account, 0);
-          if (balance >= 5) {
-            const levelUpTx = await dreamTokenContract!.levelUp(0, 5);
-            await levelUpTx.wait();
-          }
+          // const balance = await dreamTokenContract!.balanceOf(account, 0);
+          // if (balance >= 5) {
+          // const levelUpTx = await dreamTokenContract!.levelUp(0, 5);
+          // await levelUpTx.wait();
+          // }
         }
       }
     },
@@ -92,6 +96,12 @@ const NFTs = (): JSX.Element => {
 
   return (
     <Container sx={{ my: 5 }}>
+      <Alert
+        severity="warning"
+        onClose={ () => {} }
+      >
+        This is a warning alert — check it out!
+      </Alert>
       <Box marginBottom={4}>
         <Typography
           variant="h4"
