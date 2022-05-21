@@ -16,11 +16,10 @@ const Ecosystem = (): JSX.Element => {
 
   return (
     <Container sx={{ marginBottom: 5 }}>
-      <Grid container spacing={4} direction={isMd ? 'row' : 'column-reverse'}>
+      <Grid container spacing={4}>
         <Grid
           item
           container
-          alignItems={'center'}
           xs={12}
           md={6}
         >
@@ -47,10 +46,11 @@ const Ecosystem = (): JSX.Element => {
             </Box>
           </Box>
         </Grid>
-        <Grid item container justifyContent={'center'} xs={12} md={6} data-aos={isMd ? 'fade-left' : 'fade-up'}>
+        <Grid item container justifyContent={'center'} alignItems={'center'} xs={12} md={6} data-aos={isMd ? 'fade-left' : 'fade-up'}>
           <Box
             alignItems="center"
-            height={320}
+            maxWidth={300}
+            width={1}
             sx={{
               paddingY: 3
             }}

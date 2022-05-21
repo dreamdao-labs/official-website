@@ -89,7 +89,7 @@ const Ecosystem = (): JSX.Element => {
   });
 
   return (
-    <Container sx={{ my: 5 }}>
+    <Container sx={{ marginTop: 5 }}>
       <Grid container spacing={4} direction={isMd ? 'row' : 'column-reverse'}>
         <Grid
           item
@@ -101,7 +101,8 @@ const Ecosystem = (): JSX.Element => {
           data-aos={isMd ? 'fade-right' : 'fade-up'}
         >
           <Box
-            height={500}
+            maxWidth={500}
+            width={1}
             sx={{
               paddingY: 3
             }}

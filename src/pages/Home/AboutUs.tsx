@@ -25,6 +25,7 @@ const AboutUs = (): JSX.Element => {
         minHeight: { xs: 400, sm: 500, md: 600 },
         marginTop: -13,
         paddingTop: 13,
+        paddingBottom: 2,
         position: 'relative',
         display: 'flex',
         alignItems: 'center'
