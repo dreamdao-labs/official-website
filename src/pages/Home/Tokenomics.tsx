@@ -5,9 +5,9 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 
-import tokenEconomics from '../../assets/images/token-economics.png';
+import tokenomics from '../../assets/images/tokenomics.png';
 
-const Ecosystem = (): JSX.Element => {
+const Tokenomics = (): JSX.Element => {
   const theme = useTheme();
 
   const isMd = useMediaQuery(theme.breakpoints.up('md'), {
@@ -27,10 +27,10 @@ const Ecosystem = (): JSX.Element => {
           <Box>
             <Box marginBottom={1}>
               <Typography variant={'h4'} gutterBottom sx={{ fontWeight: 700 }} data-aos={isMd ? 'fade-right' : 'fade-up'}>
-                <Typography color="primary" variant="inherit" component="span">
-                Token
-                </Typography>{' '}
-                Economics
+                Dream DAO&apos;s{' '}
+                <Typography component="span" color="primary" variant="inherit">
+                  Tokenomics
+                </Typography>
               </Typography>
               <Typography component={'p'} sx={{ paddingBottom: 1 }} data-aos="fade-up">
                 In the blockchain network, Token is a crucial part.
@@ -58,7 +58,7 @@ const Ecosystem = (): JSX.Element => {
           >
             <Box
               component={'img'}
-              src={ tokenEconomics }
+              src={ tokenomics }
               width={1}
               height={1}
               sx={{
@@ -73,4 +73,4 @@ const Ecosystem = (): JSX.Element => {
   );
 };
 
-export default Ecosystem;
+export default Tokenomics;

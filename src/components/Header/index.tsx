@@ -16,8 +16,8 @@ const Menus = [
     href: '#ecosystem',
   },
   {
-    title: 'Token',
-    href: '#token',
+    title: 'Tokenomics',
+    href: '#tokenomics',
   },
   {
     title: 'NFTs',
