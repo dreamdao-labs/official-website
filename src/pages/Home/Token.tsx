@@ -20,6 +20,7 @@ const Ecosystem = (): JSX.Element => {
         <Grid
           item
           container
+          alignItems={'center'}
           xs={12}
           md={6}
         >
