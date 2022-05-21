@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { BigNumber } from 'ethers';
 import {
   Container,
   Box,
@@ -69,7 +70,8 @@ const NFTs = (): JSX.Element => {
             const price = await storeContract!.price();
             const allowance = await usdtContract!.allowance(account, storeContract?.address);
             if (allowance < price) {
-              const approveTx = await usdtContract!.approve(storeContract?.address, price);
+              const approvedAmount = BigNumber.from(price).mul(amount);
+              const approveTx = await usdtContract!.approve(storeContract?.address, approvedAmount);
               openAlert('info', 'Approving...');
 
               await approveTx.wait();
