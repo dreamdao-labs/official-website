@@ -61,6 +61,10 @@ const NFTs = (): JSX.Element => {
       action: {
         title: 'Purchase',
         method: async () => {
+          if (storeContract == null && usdtContract == null ) {
+            openAlert('error', 'Not connected to wallet!!!');
+            return;
+          }
           if (parseInt(amount) >= 1) {
             const price = await storeContract!.price();
             const allowance = await usdtContract!.allowance(account, storeContract?.address);
@@ -90,6 +94,10 @@ const NFTs = (): JSX.Element => {
       action: {
         title: 'Level Up',
         method: async () => {
+          if (dreamTokenContract == null ) {
+            openAlert('error', 'Not connected to wallet!!!');
+            return;
+          }
           const balance = await dreamTokenContract!.balanceOf(account, 0);
           if (balance >= 5) {
             const levelUpTx = await dreamTokenContract!.levelUp(0, 5);
@@ -111,6 +119,10 @@ const NFTs = (): JSX.Element => {
       action: {
         title: 'Level Up',
         method: async () => {
+          if (dreamTokenContract == null ) {
+            openAlert('error', 'Not connected to wallet!!!');
+            return;
+          }
           const balance = await dreamTokenContract!.balanceOf(account, 1);
           if (balance >= 5) {
             const levelUpTx = await dreamTokenContract!.levelUp(1, 5);

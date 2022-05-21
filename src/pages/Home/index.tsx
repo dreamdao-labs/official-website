@@ -17,6 +17,8 @@ const Home = (): JSX.Element => {
       </Box>
       <Box id="ecosystem" bgcolor={ 'alternate.main' }>
         <Ecosystem />
+      </Box>
+      <Box id="token" bgcolor={ 'alternate.main' }>
         <Token />
       </Box>
       <Box id="nft">
