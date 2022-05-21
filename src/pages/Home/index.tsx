@@ -4,6 +4,7 @@ import { Box } from '@mui/material';
 import AboutUs from './AboutUs';
 import WhatIsDAO from './WhatIsDAO';
 import Ecosystem from './Ecosystem';
+import Token from './Token';
 import NFTs from './NFTs';
 import Partners from './Partners';
 
@@ -16,6 +17,7 @@ const Home = (): JSX.Element => {
       </Box>
       <Box id="ecosystem" bgcolor={ 'alternate.main' }>
         <Ecosystem />
+        <Token />
       </Box>
       <Box id="nft">
         <NFTs />

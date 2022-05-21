@@ -64,10 +64,20 @@ const AboutUs = (): JSX.Element => {
             variant="h6"
             component="p"
             sx={{
+              marginBottom: 3,
               color: 'common.white',
             }}
           >
-            Dream DAO is a goal-oriented decentralized organization established by a group of like-minded people with dreams, dedicated to the ecological development of blockchain.
+            Developed by the core technology team of Huobi, initiated by Creator, invested and incubated by the 7 o&apos;clock Fund, and co-founded with a group of like-minded people with dreams, a decentralized organization aiming at the development of blockchain ecology. and dream to become an important member of the future Metaverse world.
+          </Typography>
+          <Typography
+            variant="h6"
+            component="p"
+            sx={{
+              color: 'common.white',
+            }}
+          >
+            During the development of Dream DAO, Creator will provide us with the resources we need (funds, technology, talents, public chains, wallets, resources of various exchanges and large ecological communities).
           </Typography>
         </Box>
       </Container>

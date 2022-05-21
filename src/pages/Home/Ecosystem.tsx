@@ -91,8 +91,21 @@ const Ecosystem = (): JSX.Element => {
   return (
     <Container sx={{ my: 5 }}>
       <Grid container spacing={4} direction={isMd ? 'row' : 'column-reverse'}>
-        <Grid item container justifyContent={'center'} xs={12} md={6} data-aos={isMd ? 'fade-right' : 'fade-up'}>
-          <Box height={1} width={1} maxWidth={400}>
+        <Grid
+          item
+          container
+          justifyContent="center"
+          alignItems="center"
+          xs={12}
+          md={6}
+          data-aos={isMd ? 'fade-right' : 'fade-up'}
+        >
+          <Box
+            height={500}
+            sx={{
+              paddingY: 3
+            }}
+          >
             <Box
               component={'img'}
               src={ section2background }
@@ -111,18 +124,26 @@ const Ecosystem = (): JSX.Element => {
           alignItems={'center'}
           xs={12}
           md={6}
-          data-aos={isMd ? 'fade-left' : 'fade-up'}
         >
           <Box>
-            <Box marginBottom={4}>
-              <Typography variant={'h4'} gutterBottom sx={{ fontWeight: 700 }}>
+            <Box marginBottom={1}>
+              <Typography variant={'h4'} gutterBottom sx={{ fontWeight: 700 }} data-aos={isMd ? 'fade-left' : 'fade-up'}>
                 <Typography color="primary" variant="inherit" component="span">
                 Ecosystem
                 </Typography>{' '}
                 is being built
               </Typography>
-              <Typography component={'p'} color={'text.secondary'}>
-                We plans to build a diversified ecosystem covering all aspects of blockchain infrastructure construction and applications, so stay tuned.
+              <Typography component={'p'} sx={{ paddingBottom: 1 }} data-aos="fade-up">
+                The overall planning is divided into early, middle and late stages.
+              </Typography>
+              <Typography component={'p'} sx={{ paddingBottom: 1 }} data-aos="fade-up">
+                Early stage: focus on building a basic ecosystem (including: NFT governance, Ecological circulation token, and Colorful platform infrastructure).
+              </Typography>
+              <Typography component={'p'} sx={{ paddingBottom: 1 }} data-aos="fade-up">
+                Mid-term: develop in the direction of colorful platform with rich and colorful, multi-playing methods, and build it together with other DAO organizations and foundations.
+              </Typography>
+              <Typography component={'p'} data-aos="fade-up">
+                Later stage: the GameFi and Metaverse Game is developed, further developing and expanding DAO funds, community and ecology, and participating in the investment strategy plan in the blockchain world!
               </Typography>
             </Box>
             <List disablePadding>

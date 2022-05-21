@@ -32,13 +32,13 @@ const WhatIsDAO = (): JSX.Element => {
               </Typography>
             </Typography>
             <Typography component={'p'} sx={{ marginBottom: 2 }} data-aos={'fade-up'}>
-              DAO is an effective and safe way to work with like-minded folks around the globe.
+              DAO is a decentralized autonomous organization, an organizational form based on blockchain technology that is run and managed by organizational members through a transparent decision-making process.
             </Typography>
             <Typography component={'p'} sx={{ marginBottom: 2 }} data-aos={'fade-up'}>
-              Think of them like an internet-native business that's collectively owned and managed by its members. They have built-in treasuries that no one has the authority to access without the approval of the group. Decisions are governed by proposals and voting to ensure everyone in the organization has a voice.
+              DAO has the characteristics of full openness, autonomous interaction, decentralized control, complexity and diversity, and emergence.
             </Typography>
             <Typography component={'p'} sx={{ marginBottom: 2 }} data-aos={'fade-up'}>
-              There's no CEO who can authorize spending based on their own whims and no chance of a dodgy CFO manipulating the books. Everything is out in the open and the rules around spending are baked into the DAO via its code.
+              Unlike traditional organizational phenomena, DAOs are not spatially limited by the real physical world, and their evolutionary processes are driven by events or goals, rapidly forming, spreading, and highly interactive.
             </Typography>
           </Box>
         </Grid>
