@@ -116,7 +116,7 @@ const Donate = (): JSX.Element => {
                 fontWeight: 700
               }}
             >
-              {'Donated: '}
+              {'Dream LP: '}
               <Typography color="primary" variant="inherit" component="span">
                 {donated}
               </Typography>
@@ -141,7 +141,7 @@ const Donate = (): JSX.Element => {
               size="large"
               onClick={ donateAction }
             >
-              {'Donate'}
+              {'Purchase'}
             </Button>
           </Box>
         </Box>

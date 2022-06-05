@@ -28,7 +28,7 @@ const App = () => {
           <Route path='/' element={ <Home /> } />
           <Route path='/tokenomic' element={ <Tokenomic /> } />
           <Route path='/nfts' element={ <NFTs /> } />
-          <Route path='/donate' element={ <Donate /> } />
+          <Route path='/lp' element={ <Donate /> } />
           <Route path='*' element={ <NotFound /> } />
         </Routes>
       </PaletteModeProvider>

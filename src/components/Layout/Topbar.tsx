@@ -21,8 +21,8 @@ const Menus = [
     href: '/nfts',
   },
   {
-    title: 'Donate',
-    href: '/donate',
+    title: 'Dream LP',
+    href: '/lp',
   }
 ];
 
