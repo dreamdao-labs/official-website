@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BigNumber, ethers } from 'ethers';
+import { ethers } from 'ethers';
 import {
   Container,
   Box,
@@ -7,11 +7,6 @@ import {
   TextField,
   InputAdornment,
   Button,
-  Grid,
-  Card,
-  CardMedia,
-  CardContent,
-  CardActions,
   Collapse,
   Alert,
   AlertColor
@@ -47,21 +42,22 @@ const Donate = (): JSX.Element => {
   );
 
   const fundraiserContract = useContract(
-    '0x4171738fe24099D3556ABCe1980f99e76784ad0F',
+    '0x5997897e65208FE243f780388FAc537Ec14e5048',
     fundraiserABI
   );
-
-  const payee = '0x7cFd8b5d03Fd44a22A9Fa07E4D026ffcD260714b';
 
   const minDonateAmount = ethers.utils.parseEther('100');
 
   useEffect(() => {
-    const fetchShares = async () => {
-      const shares = await fundraiserContract!.shares(account);
-      setDonated(shares);
-    };
     fetchShares();
-  }, [donated]);
+  }, []);
+
+  const fetchShares = async () => {
+    if (fundraiserContract !== null) {
+      const shares = await fundraiserContract!.shares(account);
+      setDonated(ethers.utils.formatEther(shares));
+    }
+  };
 
   const donateAction = async () => {
     const weiAmount = ethers.utils.parseEther(amount);
@@ -78,9 +74,9 @@ const Donate = (): JSX.Element => {
       openAlert('error', 'Below the minimum donation amount!!!');
       return;
     }
-    const allowance = await usdtContract!.allowance(account, payee);
+    const allowance = await usdtContract!.allowance(account, fundraiserContract.address);
     if (allowance < weiAmount) {
-      const approveTx = await usdtContract!.approve(payee, weiAmount);
+      const approveTx = await usdtContract!.approve(fundraiserContract.address, weiAmount);
       openAlert('info', 'Approving...');
       await approveTx.wait();
     }
