@@ -1,33 +1,25 @@
 import React from 'react';
 import { Box } from '@mui/material';
-
+import Layout from '../../components/Layout';
 import AboutUs from './AboutUs';
 import WhatIsDAO from './WhatIsDAO';
 import Ecosystem from './Ecosystem';
-import Tokenomics from './Tokenomics';
-import NFTs from './NFTs';
 import Partners from './Partners';
 
 const Home = (): JSX.Element => {
   return (
-    <Box>
-      <Box id="about">
+    <Layout colorInvert={false}>
+      <Box>
         <AboutUs />
         <WhatIsDAO />
       </Box>
-      <Box id="ecosystem" bgcolor={ 'alternate.main' }>
+      <Box bgcolor={ 'alternate.main' }>
         <Ecosystem />
       </Box>
-      <Box id="tokenomics" bgcolor={ 'alternate.main' }>
-        <Tokenomics />
-      </Box>
-      <Box id="nft">
-        <NFTs />
-      </Box>
-      <Box id="partners">
+      <Box>
         <Partners />
       </Box>
-    </Box>
+    </Layout>
   );
 };
 

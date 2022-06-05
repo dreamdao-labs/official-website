@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useTheme, Grid, Box, Container, Divider, Typography } from '@mui/material';
 
-import Logo from '../Logo';
+import Logo from './Logo';
 
 const Footer = (): JSX.Element => {
   const theme = useTheme();
@@ -22,13 +22,27 @@ const Footer = (): JSX.Element => {
               }}
             >
               <Box
-                display={'flex'}
-                marginY={2}
+                sx={{
+                  display: 'flex',
+                  marginY: 2
+                }}
               >
                 <Logo />
               </Box>
-              <Box display="flex" flexWrap={'wrap'} alignItems={'center'}>
-                <Box marginTop={1} marginRight={3}>
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  alignItems: 'center',
+                  marginY: 2
+                }}
+              >
+                <Box
+                  sx={{
+                    marginTop: 1,
+                    marginRight: 3
+                  }}
+                >
                   <Box
                     component={'svg'}
                     xmlns="http://www.w3.org/2000/svg"
@@ -46,7 +60,12 @@ const Footer = (): JSX.Element => {
                     />
                   </Box>
                 </Box>
-                <Box marginTop={1} marginRight={3}>
+                <Box
+                  sx={{
+                    marginTop: 1,
+                    marginRight: 3
+                  }}
+                >
                   <Box
                     component={'svg'}
                     xmlns="http://www.w3.org/2000/svg"
@@ -64,7 +83,12 @@ const Footer = (): JSX.Element => {
                     />
                   </Box>
                 </Box>
-                <Box marginTop={1} marginRight={3}>
+                <Box
+                  sx={{
+                    marginTop: 1,
+                    marginRight: 3
+                  }}
+                >
                   <Box
                     component={'svg'}
                     xmlns="http://www.w3.org/2000/svg"
@@ -82,7 +106,12 @@ const Footer = (): JSX.Element => {
                     />
                   </Box>
                 </Box>
-                <Box marginTop={1} marginRight={3}>
+                <Box
+                  sx={{
+                    marginTop: 1,
+                    marginRight: 3
+                  }}
+                >
                   <Box
                     component={'svg'}
                     xmlns="http://www.w3.org/2000/svg"
@@ -106,7 +135,12 @@ const Footer = (): JSX.Element => {
                     />
                   </Box>
                 </Box>
-                <Box marginTop={1} marginRight={3}>
+                <Box
+                  sx={{
+                    marginTop: 1,
+                    marginRight: 3
+                  }}
+                >
                   <Box
                     component={'svg'}
                     xmlns="http://www.w3.org/2000/svg"
@@ -124,7 +158,11 @@ const Footer = (): JSX.Element => {
                     />
                   </Box>
                 </Box>
-                <Box marginTop={1}>
+                <Box
+                  sx={{
+                    marginTop: 1
+                  }}
+                >
                   <Box
                     component={'svg'}
                     xmlns="http://www.w3.org/2000/svg"
@@ -152,7 +190,7 @@ const Footer = (): JSX.Element => {
               color="text.secondary"
               gutterBottom
             >
-              &copy; 2022 Dream DAO.
+              &copy; 2022 DreamDAO.
             </Typography>
             <Typography
               align={'center'}

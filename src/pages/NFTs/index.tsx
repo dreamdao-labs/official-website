@@ -16,6 +16,8 @@ import {
   AlertColor
 } from '@mui/material';
 
+import Layout from '../../components/Layout';
+
 import { useWeb3React } from '@web3-react/core';
 import { useContract } from '../../hooks/usContract';
 
@@ -141,122 +143,124 @@ const NFTs = (): JSX.Element => {
   ];
 
   return (
-    <Container sx={{ my: 5 }}>
-      <Box marginBottom={4}>
-        <Typography
-          variant="h4"
-          align={'center'}
-          data-aos={'fade-up'}
-          gutterBottom
-          sx={{
-            fontWeight: 700,
-          }}
-        >
-          Dream DAO&apos;s{' '}
-          <Typography color="primary" variant="inherit" component="span">
-            NFTs
-          </Typography>
-        </Typography>
-        <Typography
-          variant="h6"
-          align={'center'}
-          color={'text.secondary'}
-          data-aos={'fade-up'}
-        >
-          There are 3 types of NFTs: &quot;Star, Moon and Sun&quot;, which are Dream DAO&apos;s equity and governance credentials.
-        </Typography>
-      </Box>
-      <Grid container spacing={4}>
-        {mock.map((item, i) => (
-          <Grid
-            item
-            xs={12}
-            md={4}
-            key={i}
+    <Layout colorInvert={true}>
+      <Container sx={{ my: 5 }}>
+        <Box marginBottom={4}>
+          <Typography
+            variant="h4"
+            align={'center'}
             data-aos={'fade-up'}
-            data-aos-delay={i * 100}
-            data-aos-offset={100}
-            data-aos-duration={600}
+            gutterBottom
+            sx={{
+              fontWeight: 700,
+            }}
           >
-            <Box display={'block'} width={1} height={1}>
-              <Box
-                component={Card}
-                width={1}
-                height={1}
-                display={'flex'}
-                flexDirection={'column'}
-              >
-                <CardMedia
-                  title={item.title}
-                  image={item.media}
-                  sx={{
-                    position: 'relative',
-                    height: { xs: 350, sm: 400, md: 450 },
-                    overflow: 'hidden',
-                  }}
-                />
-                <CardContent>
-                  <Typography
-                    variant={'h6'}
-                    align={'left'}
-                    sx={{ fontWeight: 700 }}
-                  >
-                    {item.title}
-                  </Typography>
-                  <Box display={'flex'} alignItems={'center'} marginY={2}>
-                    <Typography variant={'subtitle2'} color="text.secondary">
-                      {item.description}
-                    </Typography>
-                  </Box>
-                  <CardActions sx={{ justifyContent: 'flex-end' }}>
-                    {
-                      item.textFieldName !== null &&
-                        <TextField
-                          id="amount"
-                          label="Amount"
-                          // variant="outlined"
-                          size="small"
-                          value={ amount }
-                          onChange={ (event: React.ChangeEvent<HTMLInputElement>) => { setAmount(event.target.value); } }
-                          sx={{
-                            width: 150,
-                            marginRight: 1
-                          }}
-                        />
-                    }
-                    <Button
-                      variant="contained"
-                      size="large"
-                      onClick={item.action.method}
+            DreamDAO&apos;s{' '}
+            <Typography color="primary" variant="inherit" component="span">
+              NFTs
+            </Typography>
+          </Typography>
+          <Typography
+            variant="h6"
+            align={'center'}
+            color={'text.secondary'}
+            data-aos={'fade-up'}
+          >
+            There are 3 types of NFTs: &quot;Star, Moon and Sun&quot;, which are Dream DAO&apos;s equity and governance credentials.
+          </Typography>
+        </Box>
+        <Grid container spacing={4}>
+          {mock.map((item, i) => (
+            <Grid
+              item
+              xs={12}
+              md={4}
+              key={i}
+              data-aos={'fade-up'}
+              data-aos-delay={i * 100}
+              data-aos-offset={100}
+              data-aos-duration={600}
+            >
+              <Box display={'block'} width={1} height={1}>
+                <Box
+                  component={Card}
+                  width={1}
+                  height={1}
+                  display={'flex'}
+                  flexDirection={'column'}
+                >
+                  <CardMedia
+                    title={item.title}
+                    image={item.media}
+                    sx={{
+                      position: 'relative',
+                      height: { xs: 350, sm: 400, md: 450 },
+                      overflow: 'hidden',
+                    }}
+                  />
+                  <CardContent>
+                    <Typography
+                      variant={'h6'}
+                      align={'left'}
+                      sx={{ fontWeight: 700 }}
                     >
-                      {item.action.title}
-                    </Button>
-                  </CardActions>
-                </CardContent>
+                      {item.title}
+                    </Typography>
+                    <Box display={'flex'} alignItems={'center'} marginY={2}>
+                      <Typography variant={'subtitle2'} color="text.secondary">
+                        {item.description}
+                      </Typography>
+                    </Box>
+                    <CardActions sx={{ justifyContent: 'flex-end' }}>
+                      {
+                        item.textFieldName !== null &&
+                          <TextField
+                            label="Amount"
+                            id="amount"
+                            type="number"
+                            size="small"
+                            value={ amount }
+                            onChange={ (event: React.ChangeEvent<HTMLInputElement>) => { setAmount(event.target.value); } }
+                            sx={{
+                              width: 150,
+                              marginRight: 1
+                            }}
+                          />
+                      }
+                      <Button
+                        variant="contained"
+                        size="large"
+                        onClick={item.action.method}
+                      >
+                        {item.action.title}
+                      </Button>
+                    </CardActions>
+                  </CardContent>
+                </Box>
               </Box>
-            </Box>
-          </Grid>
-        ))}
-      </Grid>
-      <Collapse
-        in={ alert }
-        sx={{
-          position: 'sticky',
-          zIndex: 999,
-          bottom: 0
-        }}
-      >
-        <Alert
-          severity={ alertSeverity }
-          onClose={ () => setAlert(false) }
+            </Grid>
+          ))}
+        </Grid>
+        <Collapse
+          in={ alert }
           sx={{
-            marginY: 2
+            position: 'sticky',
+            zIndex: 999,
+            bottom: 0
           }}
         >
-          { alertMessage }
-        </Alert>
-      </Collapse>
-    </Container>
+          <Alert
+            severity={ alertSeverity }
+            onClose={ () => setAlert(false) }
+            sx={{
+              marginY: 2
+            }}
+          >
+            { alertMessage }
+          </Alert>
+        </Collapse>
+      </Container>
+    </Layout>
   );
 };
 

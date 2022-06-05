@@ -11,7 +11,7 @@ import pancakeswap from '../../assets/images/partners/pancakeswap.png';
 const Partners = (): JSX.Element => {
   const theme = useTheme();
   return (
-    <Container sx={{ my: 5 }}>
+    <Container sx={{ py: 5 }}>
       <Box marginBottom={4}>
         <Typography
           sx={{

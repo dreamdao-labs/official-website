@@ -11,7 +11,7 @@ const PaletteModeContext = React.createContext({
 });
 
 const PaletteModeProvider = ({ children }: { children: React.ReactElement | React.ReactElement[] }) => {
-  const [mode, setMode] = useLocalStorage('palette-mode', 'dark');
+  const [mode, setMode] = useLocalStorage('palette-mode', 'light');
 
   const paletteMode = React.useMemo(
     () => ({

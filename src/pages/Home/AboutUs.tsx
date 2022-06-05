@@ -78,7 +78,7 @@ const AboutUs = (): JSX.Element => {
               color: 'common.white',
             }}
           >
-            During the development of Dream DAO, Creator will provide us with the resources we need (funds, technology, talents, public chains, wallets, resources of various exchanges and large ecological communities).
+            During the development of DreamDAO, Creator will provide us with the resources we need (funds, technology, talents, public chains, wallets, resources of various exchanges and large ecological communities).
           </Typography>
         </Box>
       </Container>

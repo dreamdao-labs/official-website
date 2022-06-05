@@ -11,7 +11,6 @@ interface Props {
 
 const TogglePaletteMode = ({ colorInvert }: Props) => {
   const theme = useTheme();
-
   const paletteModeContext = useContext(PaletteModeContext);
 
   return (

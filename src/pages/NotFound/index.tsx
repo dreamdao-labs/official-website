@@ -1,93 +1,84 @@
 import React from 'react';
-import { useTheme } from '@mui/material/styles';
-import Link from '@mui/material/Link';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import useMediaQuery from '@mui/material/useMediaQuery';
-import Typography from '@mui/material/Typography';
-import Grid from '@mui/material/Grid';
+import { useTheme, Container, Box, Grid, Typography, Link, Button } from '@mui/material';
+import Layout from '../../components/Layout';
 
 import notFoundBackground from '../../assets/images/not-found-background.svg';
 
 const NotFound = () => {
   const theme = useTheme();
-  const isMd = useMediaQuery(theme.breakpoints.up('md'), {
-    defaultMatches: true,
-  });
 
   return (
-    <Box
-      width={1}
-      margin={'0 auto'}
-      paddingX={2}
-      paddingY={{ xs: 4, sm: 6, md: 8 }}
-    >
-      <Grid container>
+    <Layout colorInvert={true}>
+      <Container>
         <Grid
-          item
           container
-          alignItems={'center'}
-          justifyContent={'center'}
-          xs={12}
-          md={6}
+          spacing={2}
+          sx={{
+            paddingY: 2
+          }}
         >
-          <Box>
-            <Typography
-              variant="h1"
-              component={'h1'}
-              align={isMd ? 'left' : 'center'}
-              sx={{ fontWeight: 700 }}
-            >
-              404
-            </Typography>
-            <Typography
-              variant="h6"
-              component="p"
-              color="text.secondary"
-              align={isMd ? 'left' : 'center'}
-            >
-              Oops! Looks like you followed a bad link.
-              <br />
-              If you think this is a problem with us, please{' '}
-              <Link href={''} underline="none">
-                tell us
-              </Link>
-            </Typography>
-            <Box
-              marginTop={4}
-              display={'flex'}
-              justifyContent={{ xs: 'center', md: 'flex-start' }}
-            >
-              <Button
-                component={Link}
-                variant="contained"
-                color="primary"
-                size="large"
-                href={'/'}
+          <Grid
+            container
+            item
+            alignItems={'center'}
+            xs={12}
+            md={7}
+          >
+            <Box>
+              <Typography
+                variant="h1"
+                sx={{ fontWeight: 700 }}
               >
-                Back home
-              </Button>
+                {'404'}
+              </Typography>
+              <Typography
+                variant="h6"
+                color="text.secondary"
+              >
+                {'Oops! Looks like you followed a bad link.'}
+              </Typography>
+              <Typography
+                variant="h6"
+                color="text.secondary"
+              >
+                {'If you think this is a problem with us, please '}
+                <Link href={''} underline="none">
+                  {'tell us.'}
+                </Link>
+              </Typography>
+              <Box
+                marginTop={4}
+                display={'flex'}
+                justifyContent={{ xs: 'center', md: 'flex-start' }}
+              >
+                <Button
+                  component={Link}
+                  variant="contained"
+                  color="primary"
+                  size="large"
+                  href={'/'}
+                >
+                  Back home
+                </Button>
+              </Box>
             </Box>
-          </Box>
+          </Grid>
+          <Grid container item xs={12} md={5}>
+            <Box height={1} width={1}>
+              <Box
+                component={'img'}
+                src={ notFoundBackground }
+                width={1}
+                height={1}
+                sx={{
+                  filter: theme.palette.mode === 'dark' ? 'brightness(0.8)' : 'none',
+                }}
+              />
+            </Box>
+          </Grid>
         </Grid>
-        <Grid item container justifyContent={'center'} xs={12} md={6}>
-          <Box height={1} width={1} maxWidth={500}>
-            <Box
-              component={'img'}
-              src={ notFoundBackground }
-              width={1}
-              height={1}
-              sx={{
-                filter:
-                  theme.palette.mode === 'dark'
-                    ? 'brightness(0.8)'
-                    : 'none',
-              }}
-            />
-          </Box>
-        </Grid>
-      </Grid>
-    </Box>
+      </Container>
+    </Layout>
   );
 };
 

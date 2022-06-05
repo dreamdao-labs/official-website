@@ -3,9 +3,10 @@ import AOS from 'aos';
 import { Routes, Route } from 'react-router-dom';
 import { PaletteModeProvider } from '../contexts/PaletteModeContext';
 import Web3ReactManager from '../components/Web3ReactManager';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
 import Home from './Home';
+import Tokenomic from './Tokenomic';
+import NFTs from './NFTs';
+import Donate from './Donate';
 import NotFound from './NotFound';
 
 import './App.css';
@@ -23,12 +24,13 @@ const App = () => {
   return (
     <Web3ReactManager>
       <PaletteModeProvider>
-        <Header />
         <Routes>
           <Route path='/' element={ <Home /> } />
+          <Route path='/tokenomic' element={ <Tokenomic /> } />
+          <Route path='/nfts' element={ <NFTs /> } />
+          <Route path='/donate' element={ <Donate /> } />
           <Route path='*' element={ <NotFound /> } />
         </Routes>
-        <Footer />
       </PaletteModeProvider>
     </Web3ReactManager>
   );

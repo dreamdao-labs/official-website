@@ -20,7 +20,7 @@ const Logo = ({ colorInvert = false }: Props) => {
         textDecoration: 'none'
       }}
     >
-      Dream{ ' ' }
+      {'Dream'}
       <Typography
         variant="inherit"
         component="span"
@@ -28,7 +28,7 @@ const Logo = ({ colorInvert = false }: Props) => {
           fontWeight: 700
         }}
       >
-        DAO
+        {'DAO'}
       </Typography>
     </Typography>
   );
