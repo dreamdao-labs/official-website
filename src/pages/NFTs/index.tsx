@@ -59,7 +59,7 @@ const NFTs = (): JSX.Element => {
     {
       media: '/tokens/0.png',
       title: 'Star',
-      description: '1,000 Limited Editions, 500 USDT/NFT.',
+      description: '200 Limited Editions, 500 USDT/NFT.',
       textFieldName: 'price',
       action: {
         title: 'Purchase',
